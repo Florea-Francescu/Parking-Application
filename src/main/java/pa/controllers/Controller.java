@@ -1,4 +1,4 @@
-package sample;
+package pa.controllers;
 
 public class Controller {
 }
