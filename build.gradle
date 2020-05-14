@@ -2,10 +2,10 @@ plugins {
 	id 'java'
 }
 
-sourceSets {
-	main {
-		java {
-			srcDirs = ['src/sample']
-		}
-	}
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 }
