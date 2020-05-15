@@ -3,6 +3,7 @@ package main.java.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import main.java.Main;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -39,15 +40,17 @@ public class LoginController {
 
             boolean exists = false;
             Iterator<JSONObject> it = userData.iterator();
+            JSONObject currentUser = null;
             while (it.hasNext()) {
-                if(sameAccount(it.next(), newUser)){
+                currentUser = it.next();
+                if(sameAccount(currentUser, newUser)){
                     exists = true;
                     break;
                 }
             }
 
             if(exists)
-                logIn();
+                loginSuccessful(currentUser);
             else
                 failedLogIn();
         } catch (IOException e) {
@@ -57,8 +60,16 @@ public class LoginController {
         }
     }
 
-    private void logIn(){
-        errorLabel.setText("Logged In Successfully!");
+    private void loginSuccessful(JSONObject user) {
+        Main main = new Main();
+        Main.currentUser = user;
+
+        try {
+            main.changeMainStage("fxml/profile.fxml", "Parking Application - Profile");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void failedLogIn(){
