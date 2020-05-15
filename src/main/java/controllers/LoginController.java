@@ -15,11 +15,15 @@ import java.util.Iterator;
 
 public class LoginController {
     @FXML
-    public TextField userInput;
+    public TextField emailInput;
     @FXML
     public TextField passInput;
     @FXML
     public Label errorLabel;
+
+    private boolean sameAccount(JSONObject o1, JSONObject o2){
+        return o1.get("Email").equals(o2.get("Email")) && o1.get("Password").equals(o2.get("Password"));
+    }
 
     @FXML
     public void loginActionHandle(){
@@ -27,16 +31,16 @@ public class LoginController {
             Object obj = new JSONParser().parse(new FileReader(getClass().getClassLoader().getResource("main/resources/users.json").getPath()));
             JSONArray userData = (JSONArray)obj;
 
-            String username = userInput.getText();
+            String username = emailInput.getText();
             String password = passInput.getText();
             JSONObject newUser = new JSONObject();
-            newUser.put("username", username);
-            newUser.put("password", password);
+            newUser.put("Email", username);
+            newUser.put("Password", password);
 
             boolean exists = false;
             Iterator<JSONObject> it = userData.iterator();
             while (it.hasNext()) {
-                if(it.next().toJSONString().equals(newUser.toJSONString())){
+                if(sameAccount(it.next(), newUser)){
                     exists = true;
                     break;
                 }
@@ -51,8 +55,6 @@ public class LoginController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-
     }
 
     private void logIn(){
