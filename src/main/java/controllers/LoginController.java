@@ -6,12 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-<<<<<<< HEAD
 import main.java.Main;
-=======
 import javafx.stage.Modality;
 import javafx.stage.Stage;
->>>>>>> 7ff70f3927bc88d9df3ac3e7ffdd14283042185f
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -70,18 +67,17 @@ public class LoginController {
         }
     }
 
-<<<<<<< HEAD
     private void loginSuccessful(JSONObject user) {
         Main main = new Main();
         Main.currentUser = user;
 
         try {
             main.changeMainStage("fxml/profile.fxml", "Parking Application - Profile");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-=======
+    }
+
     @FXML
     public void handleCreateAccountButton()
     {
@@ -98,10 +94,6 @@ public class LoginController {
             e.printStackTrace();
         }
 
-    }
-    private void logIn(){
-        errorLabel.setText("Logged In Successfully!");
->>>>>>> 7ff70f3927bc88d9df3ac3e7ffdd14283042185f
     }
 
     private void failedLogIn(){
