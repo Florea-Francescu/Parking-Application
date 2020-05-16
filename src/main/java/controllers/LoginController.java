@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import main.java.Main;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.json.simple.JSONArray;
@@ -22,11 +23,15 @@ import java.util.Iterator;
 
 public class LoginController {
     @FXML
-    public TextField userInput;
+    public TextField emailInput;
     @FXML
     public TextField passInput;
     @FXML
     public Label errorLabel;
+
+    private boolean sameAccount(JSONObject o1, JSONObject o2){
+        return o1.get("Email").equals(o2.get("Email")) && o1.get("Password").equals(o2.get("Password"));
+    }
 
     @FXML
     public void loginActionHandle(){
@@ -34,23 +39,25 @@ public class LoginController {
             Object obj = new JSONParser().parse(new FileReader(getClass().getClassLoader().getResource("main/resources/users.json").getPath()));
             JSONArray userData = (JSONArray)obj;
 
-            String username = userInput.getText();
+            String username = emailInput.getText();
             String password = passInput.getText();
             JSONObject newUser = new JSONObject();
-            newUser.put("username", username);
-            newUser.put("password", password);
+            newUser.put("Email", username);
+            newUser.put("Password", password);
 
             boolean exists = false;
             Iterator<JSONObject> it = userData.iterator();
+            JSONObject currentUser = null;
             while (it.hasNext()) {
-                if(it.next().toJSONString().equals(newUser.toJSONString())){
+                currentUser = it.next();
+                if(sameAccount(currentUser, newUser)){
                     exists = true;
                     break;
                 }
             }
 
             if(exists)
-                logIn();
+                loginSuccessful(currentUser);
             else
                 failedLogIn();
         } catch (IOException e) {
@@ -58,8 +65,17 @@ public class LoginController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
 
+    private void loginSuccessful(JSONObject user) {
+        Main main = new Main();
+        Main.currentUser = user;
 
+        try {
+            main.changeMainStage("fxml/profile.fxml", "Parking Application - Profile");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -78,9 +94,6 @@ public class LoginController {
             e.printStackTrace();
         }
 
-    }
-    private void logIn(){
-        errorLabel.setText("Logged In Successfully!");
     }
 
     private void failedLogIn(){

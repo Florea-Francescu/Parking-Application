@@ -17,13 +17,13 @@
       </Label>
       <HBox fx:id="userHBox" alignment="CENTER" prefHeight="60.0" prefWidth="275.0" spacing="10.0">
          <children>
-            <Label fx:id="userLabel" text="Username:" />
-            <TextField fx:id="userInput" promptText="Username..." />
+            <Label fx:id="emailLabel" prefWidth="60.0" text="Email:" />
+            <TextField fx:id="emailInput" promptText="Email..." />
          </children>
       </HBox>
       <HBox fx:id="passHBox" alignment="CENTER" prefHeight="60.0" prefWidth="275.0" spacing="10.0">
          <children>
-            <Label fx:id="passLabel" text="Password:" />
+            <Label fx:id="passLabel" prefWidth="60.0" text="Password:" />
             <TextField fx:id="passInput" promptText="Password..." />
          </children>
       </HBox>
