@@ -30,7 +30,7 @@
       <HBox fx:id="buttonHBox" alignment="CENTER" spacing="30.0">
          <children>
             <Button fx:id="loginButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loginActionHandle" text="Log In" />
-            <Button fx:id="accButton" alignment="CENTER_RIGHT" mnemonicParsing="false" text="Create Account" />
+            <Button fx:id="accButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleCreateAccountButton" text="Create Account" />
          </children>
       </HBox>
       <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="TOP" textFill="RED" />
