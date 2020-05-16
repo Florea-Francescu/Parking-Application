@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.CreateAccountController">
+   <children>
+      <Label alignment="CENTER" prefHeight="100.0" text="CREATE NEW ACCOUNT">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="emailLabel" prefWidth="120.0" text="Email:" />
+            <TextField fx:id="emailInput" promptText="Email..." />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="fstNameLabel" prefWidth="120.0" text="First Name:" />
+            <TextField fx:id="fstNameInput" promptText="First Name..." />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="lstNameLabel" prefWidth="120.0" text="Last Name:" />
+            <TextField fx:id="lstNameInput" promptText="Last Name..." />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="regNumberLabel" prefWidth="120.0" text="Registration Number:" />
+            <TextField fx:id="regNumberInput" promptText="Registration Number..." />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="passLabel" prefWidth="120.0" text="Password:" />
+            <TextField fx:id="passInput" promptText="Password..." />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="confPassLabel" prefWidth="120.0" text="Confirm Password:" />
+            <TextField fx:id="confPassInput" promptText="Confirm Password..." />
+         </children>
+      </HBox>
+      <Button fx:id="createButton" mnemonicParsing="false" onAction="#handleCreateAccountButton" text="Create Account" />
+      <Label fx:id="errorLabel" textFill="RED" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>
