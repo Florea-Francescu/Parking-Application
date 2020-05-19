@@ -1,0 +1,1 @@
+[{"ID": "A1", "Floor": "0", "PricePerHour": "10", "Status": "Available"}, {"ID": "B2", "Floor": "1", "PricePerHour": "5", "Status": "Occupied"}, {"ID": "A2", "Floor": "0", "PricePerHour": "15", "Status": "Available"}, {"ID": "B1", "Floor": "1", "PricePerHour": "12", "Status": "Occupied"}, {"ID": "A3", "Floor": "1", "PricePerHour": "4", "Status": "Available"}]
