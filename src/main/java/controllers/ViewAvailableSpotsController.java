@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import main.java.Main;
 import main.java.entities.ParkingSpot;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -58,8 +59,6 @@ public class ViewAvailableSpotsController implements Initializable {
             e.printStackTrace();
         }
 
-        //avSpots.add()
-
         idColumn.setCellValueFactory(
                 new PropertyValueFactory<>("id")
         );
@@ -77,5 +76,16 @@ public class ViewAvailableSpotsController implements Initializable {
         );
 
         table.setItems(avSpots);
+    }
+
+    @FXML
+    public void handleProfileButton() {
+        Main main = new Main();
+        try {
+            main.changeMainStage("fxml/profile.fxml", "Parking Application - Profile");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

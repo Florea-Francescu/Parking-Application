@@ -11,7 +11,7 @@
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" text="Parking Spots" />
+            <Button fx:id="psButton" mnemonicParsing="false" onAction="#handleParkingSpotsButton" text="Parking Spots" />
          </children>
       </HBox>
       <Label alignment="CENTER" text="YOUR PROFILE" textAlignment="CENTER">
