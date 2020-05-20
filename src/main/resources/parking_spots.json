@@ -1,0 +1,23 @@
+[
+  {"ID": "A1", "Floor": "1", "PricePerHour": "10", "Status": "Available"},
+  {"ID": "A2", "Floor": "1", "PricePerHour": "15", "Status": "Available"},
+  {"ID": "A3", "Floor": "1", "PricePerHour": "4", "Status": "Unavailable"},
+  {"ID": "A4", "Floor": "1", "PricePerHour": "10", "Status": "Available"},
+  {"ID": "A5", "Floor": "1", "PricePerHour": "15", "Status": "Available"},
+  {"ID": "A6", "Floor": "1", "PricePerHour": "4", "Status": "Unavailable"},
+  {"ID": "A7", "Floor": "1", "PricePerHour": "10", "Status": "Available"},
+  {"ID": "A8", "Floor": "1", "PricePerHour": "15", "Status": "Unavailable"},
+  {"ID": "A9", "Floor": "1", "PricePerHour": "4", "Status": "Available"},
+  {"ID": "A10", "Floor": "1", "PricePerHour": "10", "Status": "Unavailable"},
+
+  {"ID": "B1", "Floor": "2", "PricePerHour": "5", "Status": "Unavailable"},
+  {"ID": "B2", "Floor": "2", "PricePerHour": "12", "Status": "Available"},
+  {"ID": "B3", "Floor": "2", "PricePerHour": "5", "Status": "Available"},
+  {"ID": "B4", "Floor": "2", "PricePerHour": "12", "Status": "Unavailable"},
+  {"ID": "B5", "Floor": "2", "PricePerHour": "5", "Status": "Available"},
+  {"ID": "B6", "Floor": "2", "PricePerHour": "12", "Status": "Available"},
+  {"ID": "B7", "Floor": "2", "PricePerHour": "5", "Status": "Available"},
+  {"ID": "B8", "Floor": "2", "PricePerHour": "12", "Status": "Unavailable"},
+  {"ID": "B9", "Floor": "2", "PricePerHour": "5", "Status": "Available"},
+  {"ID": "B10", "Floor": "2", "PricePerHour": "12", "Status": "Available"}
+]

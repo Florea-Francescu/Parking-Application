@@ -24,7 +24,7 @@ public class Main extends Application {
         mainWindow = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("fxml/login.fxml"));
         primaryStage.setTitle("Parking Application - Login");
-        primaryStage.setScene(new Scene(root, 275, 250));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
