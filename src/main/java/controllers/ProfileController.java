@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import main.java.Main;
-import org.json.simple.JSONObject;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,7 +29,7 @@ public class ProfileController implements Initializable {
     public void handleParkingSpotsButton() {
         Main main = new Main();
         try {
-            main.changeMainStage("fxml/viewAvailableSpots.fxml", "Parking Application - Available Spots");
+            main.changeMainStage("/fxml/viewAvailableSpots.fxml", "Parking Application - Available Spots");
         } catch (Exception e) {
             e.printStackTrace();
         }

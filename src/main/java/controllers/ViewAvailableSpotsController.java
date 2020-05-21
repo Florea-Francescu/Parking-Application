@@ -82,7 +82,7 @@ public class ViewAvailableSpotsController implements Initializable {
     public void handleProfileButton() {
         Main main = new Main();
         try {
-            main.changeMainStage("fxml/profile.fxml", "Parking Application - Profile");
+            main.changeMainStage("/fxml/profile.fxml", "Parking Application - Profile");
         } catch (Exception e) {
             e.printStackTrace();
         }

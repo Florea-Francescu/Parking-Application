@@ -16,8 +16,6 @@ import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 
 
@@ -36,7 +34,7 @@ public class LoginController {
     @FXML
     public void loginActionHandle(){
         try {
-            Object obj = new JSONParser().parse(new FileReader(getClass().getClassLoader().getResource("main/resources/users.json").getPath()));
+            Object obj = new JSONParser().parse(new FileReader(getClass().getResource("/users.json").getPath()));
             JSONArray userData = (JSONArray)obj;
 
             String username = emailInput.getText();
@@ -72,7 +70,7 @@ public class LoginController {
         Main.currentUser = user;
 
         try {
-            main.changeMainStage("fxml/profile.fxml", "Parking Application - Profile");
+            main.changeMainStage("/fxml/profile.fxml", "Parking Application - Profile");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -85,7 +83,7 @@ public class LoginController {
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Create New Account");
         try {
-           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/createAccount.fxml"));
+           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/createAccount.fxml"));
            Parent root = (Parent)fxmlLoader.load();
            window.setScene(new Scene(root,400,400));
            window.show();
