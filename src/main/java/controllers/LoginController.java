@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import main.java.Main;
 import javafx.stage.Modality;
@@ -16,6 +17,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.Iterator;
 
 
@@ -26,22 +28,34 @@ public class LoginController {
     public TextField passInput;
     @FXML
     public Label errorLabel;
+    @FXML
+    public RadioButton driverButton;
+    @FXML
+    public RadioButton managerButton;
 
     private boolean sameAccount(JSONObject o1, JSONObject o2){
-        return o1.get("Email").equals(o2.get("Email")) && o1.get("Password").equals(o2.get("Password"));
+        return o1.get("Email").equals(o2.get("Email")) &&
+                o1.get("Password").equals(o2.get("Password"));
     }
 
     @FXML
     public void loginActionHandle(){
+        String loginFile = "/users.json";
+        Base64.Encoder enc = Base64.getEncoder();
+
+        if(managerButton.isSelected()){
+            loginFile = "/managers.json";
+        }
+
         try {
-            Object obj = new JSONParser().parse(new FileReader(getClass().getResource("/users.json").getPath()));
+            Object obj = new JSONParser().parse(new FileReader(getClass().getResource(loginFile).getPath()));
             JSONArray userData = (JSONArray)obj;
 
             String username = emailInput.getText();
             String password = passInput.getText();
             JSONObject newUser = new JSONObject();
             newUser.put("Email", username);
-            newUser.put("Password", password);
+            newUser.put("Password", enc.encodeToString(((String)password).getBytes()));
 
             boolean exists = false;
             Iterator<JSONObject> it = userData.iterator();
@@ -54,8 +68,10 @@ public class LoginController {
                 }
             }
 
-            if(exists)
-                loginSuccessful(currentUser);
+            if(exists && driverButton.isSelected())
+                userLoginSuccessful(currentUser);
+            else if(exists && managerButton.isSelected())
+                managerLoginSuccessful(currentUser);
             else
                 failedLogIn();
         } catch (IOException e) {
@@ -65,12 +81,16 @@ public class LoginController {
         }
     }
 
-    private void loginSuccessful(JSONObject user) {
+    private void managerLoginSuccessful(JSONObject user) {
+        System.out.println("Manager logged in!");
+    }
+
+    private void userLoginSuccessful(JSONObject user) {
         Main main = new Main();
         Main.currentUser = user;
 
         try {
-            main.changeMainStage("/fxml/profile.fxml", "Parking Application - Profile");
+            main.changeMainStage("/fxml/driverProfile.fxml", "Parking Application - Profile");
         } catch (Exception e) {
             e.printStackTrace();
         }
