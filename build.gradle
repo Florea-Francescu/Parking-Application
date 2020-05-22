@@ -9,7 +9,6 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 
-
 javafx {
     version = "14"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
@@ -36,3 +35,13 @@ dependencies {
 }
 
 mainClassName = 'main.java.Main'
+
+tasks.register("buildrun"){
+    group = 'Shortcut'
+    description = 'Builds and runs the project'
+    dependsOn build
+    dependsOn run
+    doLast{
+        println 'Project build and run task completed!'
+    }
+}

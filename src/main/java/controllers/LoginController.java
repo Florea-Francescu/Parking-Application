@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import main.java.Main;
@@ -25,7 +26,7 @@ public class LoginController {
     @FXML
     public TextField emailInput;
     @FXML
-    public TextField passInput;
+    public PasswordField passInput;
     @FXML
     public Label errorLabel;
     @FXML
@@ -82,7 +83,14 @@ public class LoginController {
     }
 
     private void managerLoginSuccessful(JSONObject user) {
-        System.out.println("Manager logged in!");
+        Main main = new Main();
+        Main.currentUser = user;
+
+        try {
+            main.changeMainStage("/fxml/managerProfile.fxml", "Parking Application - Profile");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void userLoginSuccessful(JSONObject user) {
@@ -111,7 +119,6 @@ public class LoginController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     private void failedLogIn(){
