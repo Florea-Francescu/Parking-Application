@@ -14,7 +14,7 @@ public class ParkingSpot {
         this.id = id;
         this.floor = floor;
         this.pricePerHour = pricePerHour;
-        action = new Button("Order");
+        action = new Button("Claim");
     }
 
     public void setId(String id) {
