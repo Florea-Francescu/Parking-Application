@@ -34,4 +34,16 @@ public class ManagerProfileController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void handleParkingSpotsButton(){
+        Main main = new Main();
+        main.currentUser = null;
+
+        try {
+            main.changeMainStage("/fxml/viewAllSpots.fxml", "Parking Application - Parking Spots");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
