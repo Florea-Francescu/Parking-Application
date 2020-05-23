@@ -1,7 +1,13 @@
 package main.java.entities;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+
+import java.util.Optional;
 
 public class ParkingSpot {
     private String id;
@@ -15,6 +21,21 @@ public class ParkingSpot {
         this.floor = floor;
         this.pricePerHour = pricePerHour;
         action = new Button("Claim");
+        action.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirmation");
+                    alert.setHeaderText("Please, confrim");
+                    alert.setContentText("Do you want to claim this spot?");
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.get() == ButtonType.OK){
+                        // ... user chose OK
+                    } else {
+                        // ... user chose CANCEL or closed the dialog
+                    }
+                }
+            });
     }
 
     public void setId(String id) {

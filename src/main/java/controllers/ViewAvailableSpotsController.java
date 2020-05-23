@@ -4,9 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import main.java.Main;
 import main.java.entities.ParkingSpot;
@@ -19,6 +17,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ViewAvailableSpotsController implements Initializable {
@@ -86,6 +85,6 @@ public class ViewAvailableSpotsController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+
 }
