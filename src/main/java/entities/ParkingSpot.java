@@ -21,19 +21,16 @@ public class ParkingSpot {
         this.floor = floor;
         this.pricePerHour = pricePerHour;
         action = new Button("Claim");
-        action.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Confirmation");
-                    alert.setHeaderText("Please, confrim");
-                    alert.setContentText("Do you want to claim this spot?");
-                    Optional<ButtonType> result = alert.showAndWait();
-                    if (result.get() == ButtonType.OK){
-                        // ... user chose OK
-                    } else {
-                        // ... user chose CANCEL or closed the dialog
-                    }
+        action.setOnAction(event -> {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation dialogue");
+                alert.setHeaderText("Please, confirm this parking spot");
+                alert.setContentText("Do you want to claim this spot?");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
+                    // ... user chose OK
+                } else {
+                    // cancel
                 }
             });
     }
