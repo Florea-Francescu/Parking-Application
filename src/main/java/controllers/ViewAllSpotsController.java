@@ -40,6 +40,7 @@ public class ViewAllSpotsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(Main.currentUser);
         ObservableList<ManagerParkingSpot> avSpots = FXCollections.observableArrayList();
 
         try {
