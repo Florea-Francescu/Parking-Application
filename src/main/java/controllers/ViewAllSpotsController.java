@@ -40,7 +40,6 @@ public class ViewAllSpotsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(Main.currentUser);
         ObservableList<ManagerParkingSpot> avSpots = FXCollections.observableArrayList();
 
         try {
@@ -53,7 +52,7 @@ public class ViewAllSpotsController implements Initializable {
             {
                 JSONObject currentSpot = it.next();
                 ManagerParkingSpot ps = new ManagerParkingSpot((String)currentSpot.get("ID"), (String)currentSpot.get("Floor"),
-                        (String)currentSpot.get("PricePerHour"), (String)currentSpot.get("Status"), "-");
+                        (String)currentSpot.get("PricePerHour"), (String)currentSpot.get("Status"), "TM18TSM");
                 avSpots.add(ps);
             }
 
@@ -84,7 +83,7 @@ public class ViewAllSpotsController implements Initializable {
     }
 
     @FXML
-    public void handleProfileButton(){ //FIXME: for some reason, this doesn't work...
+    public void handleProfileButton(){
         Main main;
         main = new Main();
         try {

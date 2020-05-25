@@ -22,7 +22,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         mainWindow = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/viewAllSpots.fxml")); //TODO: Revert this back to login.fxml
         primaryStage.setTitle("Parking Application - Login");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
