@@ -18,7 +18,7 @@ public class ManagerProfileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        fstNameLabel.setText((String) Main.currentUser.get("FirstName"));
+        fstNameLabel.setText((String)Main.currentUser.get("FirstName"));
         lstNameLabel.setText((String)Main.currentUser.get("LastName"));
         emailLabel.setText((String)Main.currentUser.get("Email"));
     }
@@ -30,6 +30,17 @@ public class ManagerProfileController implements Initializable {
 
         try {
             main.changeMainStage("/fxml/login.fxml", "Parking Application - Login");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleParkingSpotsButton(){
+        Main main = new Main();
+
+        try {
+            main.changeMainStage("/fxml/viewAllSpots.fxml", "Parking Application - Parking Spots");
         } catch (Exception e) {
             e.printStackTrace();
         }
