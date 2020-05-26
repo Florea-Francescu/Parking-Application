@@ -1,13 +1,14 @@
 package main.java.entities;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 
-import java.util.Optional;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+
 
 public class ParkingSpot {
     private String id;
@@ -22,18 +23,22 @@ public class ParkingSpot {
         this.pricePerHour = pricePerHour;
         action = new Button("Claim");
         action.setOnAction(event -> {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Confirmation dialogue");
-                alert.setHeaderText("Please, confirm this parking spot");
-                alert.setContentText("Do you want to claim this spot?");
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == ButtonType.OK){
-                    // ... user chose OK
-                } else {
-                    // cancel
-                }
+            Stage window = new Stage();
+            window.initModality(Modality.APPLICATION_MODAL);
+            window.setTitle("Confirm the parking spot");
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/reserveSpot.fxml"));
+                Parent root = (Parent)fxmlLoader.load();
+                window.setScene(new Scene(root,400,200));
+                window.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             });
     }
+
+
 
     public void setId(String id) {
         this.id = id;
