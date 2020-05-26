@@ -1,11 +1,13 @@
 package main.java.entities;
 
 import javafx.scene.control.Button;
+import main.java.utils.JavaMailUtil;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import javax.mail.MessagingException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
@@ -37,7 +39,11 @@ public class ManagerParkingSpot {
             message = "The car with the registration number " + claimed + ", owned by " + carOwner.get("FirstName") + " " +
                      carOwner.get("LastName") + " was reported by the application! It is parked at the " + id + " parking spot.";
 
-            System.out.println(message);
+            try {
+                JavaMailUtil.sendMail("parkingapplication3@gmail.com", "Parking Application - ALERT!", message);
+            } catch (MessagingException messagingException) {
+                messagingException.printStackTrace();
+            }
         });
     }
 
