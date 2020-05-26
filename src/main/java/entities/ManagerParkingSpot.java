@@ -1,7 +1,7 @@
 package main.java.entities;
 
 import javafx.scene.control.Button;
-import main.java.utils.JavaMailUtil;
+import main.java.utils.JavaMailUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -40,16 +40,20 @@ public class ManagerParkingSpot {
                      carOwner.get("LastName") + " was reported by the application! It is parked at the " + id + " parking spot.";
 
             try {
-                JavaMailUtil.sendMail("parkingapplication3@gmail.com", "Parking Application - ALERT!", message);
+                JavaMailUtils.sendMail("parkingapplication3@gmail.com", "Parking Application - ALERT!", message);
             } catch (MessagingException messagingException) {
                 messagingException.printStackTrace();
             }
+            action.setText("Reported!");
+            action.setDisable(true);
         });
     }
 
     private void findCarOwner(){
         try {
-            Object obj = new JSONParser().parse(new FileReader(getClass().getResource("/users.json").getPath()));
+            FileReader reader = new FileReader(getClass().getResource("/users.json").getPath());
+            Object obj = new JSONParser().parse(reader);
+            reader.close();
             JSONArray users = (JSONArray)obj;
 
             Iterator<JSONObject> it = users.iterator();
@@ -65,6 +69,10 @@ public class ManagerParkingSpot {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public void removeButton(){
+        this.action = null;
     }
 
     public String getId() {

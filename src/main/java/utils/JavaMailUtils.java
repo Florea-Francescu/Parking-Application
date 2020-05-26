@@ -5,7 +5,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-public class JavaMailUtil {
+public class JavaMailUtils {
     public static void sendMail(String recipient, String subject, String msg) throws MessagingException {
         System.out.println("Sending email!");
         Properties properties = new Properties();

@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import main.java.Main;
 import main.java.entities.ManagerParkingSpot;
+import main.java.utils.OtherUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -43,9 +44,11 @@ public class ViewAllSpotsController implements Initializable {
         ObservableList<ManagerParkingSpot> avSpots = FXCollections.observableArrayList();
 
         try {
+            OtherUtils ju = new OtherUtils();
             FileReader reader = new FileReader("src/main/resources/parking_spots.json");
             Object obj = new JSONParser().parse(reader);
             JSONArray spots = (JSONArray) obj;
+
             reader.close();
             Iterator<JSONObject> it = spots.iterator();
             while(it.hasNext())
@@ -53,6 +56,10 @@ public class ViewAllSpotsController implements Initializable {
                 JSONObject currentSpot = it.next();
                 ManagerParkingSpot ps = new ManagerParkingSpot((String)currentSpot.get("ID"), (String)currentSpot.get("Floor"),
                         (String)currentSpot.get("PricePerHour"), (String)currentSpot.get("Status"), "TM18TSM");
+                if(!ju.isSuspect(ps.getClaimed())) { //the if where the app figures out if it should display a report button
+                    ps.removeButton();
+                }
+
                 avSpots.add(ps);
             }
 
