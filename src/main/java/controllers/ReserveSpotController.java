@@ -7,6 +7,11 @@ import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 import main.java.Main;
 import main.java.entities.ParkingSpot;
+import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
+import main.java.Main;
+import main.java.entities.ParkingSpot;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
