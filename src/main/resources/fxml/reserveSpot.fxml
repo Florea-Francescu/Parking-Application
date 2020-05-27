@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -30,9 +31,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0" spacing="10.0">
          <children>
-            <RadioButton fx:id="oneHourButton" mnemonicParsing="false" text="One Hour" />
-            <RadioButton fx:id="twoHoursButton" mnemonicParsing="false" text="Two Hours" />
-            <RadioButton fx:id="sixHoursButton" mnemonicParsing="false" text="Six Hours" />
+            <RadioButton fx:id="oneHourButton" mnemonicParsing="false" onAction="#radioButtonChanged" selected="true" text="One Hour">
+               <toggleGroup>
+                  <ToggleGroup fx:id="hourSelect" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="twoHoursButton" mnemonicParsing="false" onAction="#radioButtonChanged" text="Two Hours" toggleGroup="$hourSelect" />
+            <RadioButton fx:id="sixHoursButton" mnemonicParsing="false" onAction="#radioButtonChanged" text="Six Hours" toggleGroup="$hourSelect" />
          </children>
       </HBox>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
