@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -42,13 +43,13 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label fx:id="passLabel" prefWidth="120.0" text="Password:" />
-            <TextField fx:id="passInput" promptText="Password..." />
+            <PasswordField fx:id="passInput" promptText="Password..." />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label fx:id="confPassLabel" prefWidth="120.0" text="Confirm Password:" />
-            <TextField fx:id="confPassInput" promptText="Confirm Password..." />
+            <PasswordField fx:id="confPassInput" promptText="Confirm Password..." />
          </children>
       </HBox>
       <Button fx:id="createButton" mnemonicParsing="false" onAction="#handleCreateAccountButton" text="Create Account" />

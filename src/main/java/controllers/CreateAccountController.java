@@ -2,6 +2,7 @@ package main.java.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -29,10 +30,10 @@ public class CreateAccountController {
     public TextField regNumberInput;
 
     @FXML
-    public TextField passInput;
+    public PasswordField passInput;
 
     @FXML
-    public TextField confPassInput;
+    public PasswordField confPassInput;
 
     @FXML
     public Label errorLabel;
@@ -115,7 +116,6 @@ public class CreateAccountController {
                     accountAlreadyExists();
                 } else {
                     userData.add(newUser);
-                    //PrintWriter pw = new PrintWriter(getClass().getResource("../../resources/users.json").getPath());
                     FileWriter file = new FileWriter("src/main/resources/users.json");
                     file.write(userData.toJSONString());
                     file.close();
@@ -138,5 +138,6 @@ public class CreateAccountController {
     {
 
         errorLabel.setText("Successfully created account!");
+
     }
 }
