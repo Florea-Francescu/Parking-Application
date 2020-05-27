@@ -7,7 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import netscape.javascript.JSObject;
 
+import static java.lang.Integer.parseInt;
 
 
 public class ParkingSpot {
@@ -15,7 +17,8 @@ public class ParkingSpot {
     private String floor;
     private String pricePerHour;
     private Button action;
-
+    public static int price;
+    public static String idSpot;
     public ParkingSpot(String id, String floor, String pricePerHour)
     {
         this.id = id;
@@ -27,6 +30,8 @@ public class ParkingSpot {
             window.initModality(Modality.APPLICATION_MODAL);
             window.setTitle("Confirm the parking spot");
             try {
+                price = parseInt(pricePerHour);
+                idSpot = id;
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/reserveSpot.fxml"));
                 Parent root = (Parent)fxmlLoader.load();
                 window.setScene(new Scene(root,400,200));
