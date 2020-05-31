@@ -4,17 +4,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.stage.Stage;
+import main.java.Main;
+import main.java.entities.ParkingSpot;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import main.java.Main;
 import main.java.entities.ParkingSpot;
-import netscape.javascript.JSObject;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -69,19 +71,17 @@ public class ReserveSpotController {
             JSONObject newSpot = new JSONObject();
             newSpot.put("Email", username);
             newSpot.put("RegistrationNumber", regNumber);
+            newSpot.put("ID", ParkingSpot.idSpot);
 
             if(oneHourButton.isSelected()) {
                 newSpot.put("Hours", "1");
-                //priceLabel.setText("" + ParkingSpot.price * 1);
             }
             if(twoHoursButton.isSelected()) {
                 newSpot.put("Hours", "2");
-               // priceLabel.setText("" + ParkingSpot.price * 2);
             }
             if(sixHoursButton.isSelected())
             {
                 newSpot.put("Hours", "6");
-                //priceLabel.setText("" + ParkingSpot.price * 6);
             }
             spotsData.add(newSpot);
             FileWriter file = new FileWriter("src/main/resources/reserved_spots.json");
