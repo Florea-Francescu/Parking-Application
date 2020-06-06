@@ -54,8 +54,26 @@ public class ViewAllSpotsController implements Initializable {
             while(it.hasNext())
             {
                 JSONObject currentSpot = it.next();
+
+                //check if the spot is reserved
+                String claimed = "-";
+                if(currentSpot.get("Status").equals("Unavailable")) {
+                    FileReader reservedReader = new FileReader("src/main/resources/reserved_spots.json");
+                    Object obj2 = new JSONParser().parse(reservedReader);
+                    reservedReader.close();
+                    JSONArray reservedSpots = (JSONArray) obj2;
+
+                    Iterator<JSONObject> it2 = reservedSpots.iterator();
+                    while (it2.hasNext()) {
+                        JSONObject currentReserved = it2.next();
+                        if (currentReserved.get("ID").equals(currentSpot.get("ID"))) {
+                            claimed = (String) currentReserved.get("RegistrationNumber");
+                        }
+                    }
+                }
+
                 ManagerParkingSpot ps = new ManagerParkingSpot((String)currentSpot.get("ID"), (String)currentSpot.get("Floor"),
-                        (String)currentSpot.get("PricePerHour"), (String)currentSpot.get("Status"), "TM18TSM");
+                        (String)currentSpot.get("PricePerHour"), (String)currentSpot.get("Status"), claimed);
                 if(!ju.isSuspect(ps.getClaimed())) { //the if where the app figures out if it should display a report button
                     ps.removeButton();
                 }
