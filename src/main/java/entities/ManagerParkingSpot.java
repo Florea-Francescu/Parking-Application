@@ -40,7 +40,7 @@ public class ManagerParkingSpot {
                      carOwner.get("LastName") + " was reported by the application! It is parked at the " + id + " parking spot.";
 
             try {
-                JavaMailUtils.sendMail("parkingapplication3@gmail.com", "Parking Application - ALERT!", message);
+                JavaMailUtils.sendMail("parkingapplication3@gmail.com", "Parking Application - SUSPICIOUS ACTIVITY!", message);
             } catch (MessagingException messagingException) {
                 messagingException.printStackTrace();
             }
