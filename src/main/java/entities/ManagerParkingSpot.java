@@ -1,6 +1,16 @@
 package main.java.entities;
 
 import javafx.scene.control.Button;
+import main.java.utils.JavaMailUtils;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import javax.mail.MessagingException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Iterator;
 
 public class ManagerParkingSpot {
     private String id;
@@ -10,6 +20,8 @@ public class ManagerParkingSpot {
     private String claimed;
     private Button action;
 
+    private JSONObject carOwner = null;
+
     public ManagerParkingSpot(String id, String floor, String price, String status, String claimed){
         this.id = id;
         this.floor = floor;
@@ -17,6 +29,50 @@ public class ManagerParkingSpot {
         this.status = status;
         this.claimed = claimed;
         action = new Button("Report");
+        addButtonFunctionality();
+    }
+
+    private void addButtonFunctionality(){
+        action.setOnAction(e -> {
+            String message = "";
+            findCarOwner();
+            message = "The car with the registration number " + claimed + ", owned by " + carOwner.get("FirstName") + " " +
+                     carOwner.get("LastName") + " was reported by the application! It is parked at the " + id + " parking spot.";
+
+            try {
+                JavaMailUtils.sendMail("parkingapplication3@gmail.com", "Parking Application - SUSPICIOUS ACTIVITY!", message);
+            } catch (MessagingException messagingException) {
+                messagingException.printStackTrace();
+            }
+            action.setText("Reported!");
+            action.setDisable(true);
+        });
+    }
+
+    private void findCarOwner(){
+        try {
+            FileReader reader = new FileReader(getClass().getResource("/users.json").getPath());
+            Object obj = new JSONParser().parse(reader);
+            reader.close();
+            JSONArray users = (JSONArray)obj;
+
+            Iterator<JSONObject> it = users.iterator();
+            while (it.hasNext()){
+                JSONObject current = it.next();
+                if(current.get("RegistrationNumber").equals(this.claimed)) {
+                    this.carOwner = current;
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removeButton(){
+        this.action = null;
     }
 
     public String getId() {

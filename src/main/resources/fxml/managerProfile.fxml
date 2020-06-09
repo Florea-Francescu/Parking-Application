@@ -9,9 +9,10 @@
 
 <VBox alignment="TOP_CENTER" prefHeight="144.0" prefWidth="360.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.ManagerProfileController">
     <children>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
          <children>
             <Button mnemonicParsing="false" onAction="#handleParkingSpotsButton" text="Parking Spots" />
+            <Button mnemonicParsing="false" onAction="#handleFinesButton" text="Fines" />
          </children>
       </HBox>
         <Label alignment="CENTER" text="YOUR PROFILE" textAlignment="CENTER">

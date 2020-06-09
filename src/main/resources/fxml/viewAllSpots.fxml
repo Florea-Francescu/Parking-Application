@@ -9,9 +9,10 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.ViewAllSpotsController">
     <children>
-        <HBox>
+        <HBox spacing="10.0">
          <children>
             <Button fx:id="profileButton" mnemonicParsing="false" onAction="#handleProfileButton" text="Profile" />
+            <Button mnemonicParsing="false" onAction="#handleFinesButton" text="Fines" />
          </children></HBox>
         <TableView fx:id="table">
             <columns>

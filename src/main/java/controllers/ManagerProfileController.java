@@ -45,4 +45,15 @@ public class ManagerProfileController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void handleFinesButton(){
+        Main main = new Main();
+
+        try {
+            main.changeMainStage("/fxml/managerFines.fxml", "Parking Application - Fines");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
