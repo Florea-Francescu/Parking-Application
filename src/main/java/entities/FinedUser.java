@@ -2,8 +2,12 @@ package main.java.entities;
 
 import javafx.scene.control.Button;
 import main.java.utils.JavaMailUtils;
+import main.java.utils.OtherUtils;
+import org.json.simple.JSONObject;
 
 import javax.mail.MessagingException;
+import javax.print.attribute.standard.MediaSize;
+import java.io.IOException;
 
 public class FinedUser {
     private String fstName;
@@ -24,7 +28,7 @@ public class FinedUser {
         addButtonFunctionality();
 
         checkProfile = new Button("Check");
-        //TODO: add functionality
+        addCheckProfileFunctionality();
     }
 
     private void addButtonFunctionality(){
@@ -38,6 +42,19 @@ public class FinedUser {
             }
             action.setText("Reported!");
             action.setDisable(true);
+        });
+    }
+
+    private void addCheckProfileFunctionality(){
+        checkProfile.setOnAction(e -> {
+            OtherUtils util = new OtherUtils();
+            JSONObject user = OtherUtils.getUser(regNumber);
+
+            try {
+                util.createCheckProfile(user);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
         });
     }
 
