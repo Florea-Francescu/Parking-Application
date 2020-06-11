@@ -23,7 +23,11 @@
             <TableColumn fx:id="fstNameColumn" prefWidth="75.0" text="First Name" />
             <TableColumn fx:id="lstNameColumn" prefWidth="75.0" text="Last Name" />
             <TableColumn fx:id="emailColumn" prefWidth="75.0" text="Email" />
-            <TableColumn fx:id="actionColumn" prefWidth="75.0" text="Action" />
+            <TableColumn fx:id="actionColumn" prefWidth="75.0" text="Actions">
+               <columns>
+                  <TableColumn fx:id="reportColumn" prefWidth="75.0" text="Report" />
+                  <TableColumn fx:id="profileColumn" prefWidth="75.0" text="Profile" />
+               </columns></TableColumn>
          </columns></TableView>
     </children>
     <padding>

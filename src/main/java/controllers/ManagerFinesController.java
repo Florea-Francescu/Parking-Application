@@ -36,7 +36,9 @@ public class ManagerFinesController implements Initializable {
     @FXML
     TableColumn<FinedUser, String> emailColumn;
     @FXML
-    TableColumn<FinedUser, Button> actionColumn;
+    TableColumn<FinedUser, Button> reportColumn;
+    @FXML
+    TableColumn<FinedUser, Button> profileColumn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -88,8 +90,11 @@ public class ManagerFinesController implements Initializable {
         emailColumn.setCellValueFactory(
                 new PropertyValueFactory<>("email")
         );
-        actionColumn.setCellValueFactory(
+        reportColumn.setCellValueFactory(
                 new PropertyValueFactory<>("action")
+        );
+        profileColumn.setCellValueFactory(
+                new PropertyValueFactory<>("checkProfile")
         );
 
         table.setItems(finedCars);

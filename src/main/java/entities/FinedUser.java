@@ -12,6 +12,8 @@ public class FinedUser {
     private String regNumber;
     private Button action;
 
+    private Button checkProfile;
+
     public FinedUser(String fstName, String lstName, String email, String regNumber) {
         this.fstName = fstName;
         this.lstName = lstName;
@@ -20,6 +22,9 @@ public class FinedUser {
 
         action = new Button("Report");
         addButtonFunctionality();
+
+        checkProfile = new Button("Check");
+        //TODO: add functionality
     }
 
     private void addButtonFunctionality(){
@@ -74,5 +79,13 @@ public class FinedUser {
 
     public void setAction(Button action) {
         this.action = action;
+    }
+
+    public Button getCheckProfile() {
+        return checkProfile;
+    }
+
+    public void setCheckProfile(Button checkProfile) {
+        this.checkProfile = checkProfile;
     }
 }
