@@ -16,7 +16,7 @@
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin></Button>
-            <Button mnemonicParsing="false" text="Wallet">
+            <Button fx:id="walletButton" mnemonicParsing="false" onAction="#handleWalletButton" text="Wallet">
                <HBox.margin>
                   <Insets left="135.0" />
                </HBox.margin>
