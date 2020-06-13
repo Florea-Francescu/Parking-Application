@@ -78,7 +78,7 @@ public class ReserveSpotController {
                     JSONObject sameUser = itReader.next();
                     int dif;
                     if (sameUser.get("Email").equals((String) Main.currentUser.get("Email"))) {
-                        dif = parseInt((String) Main.currentUser.get("Currency")) - priceHour;
+                        dif = parseInt((String) sameUser.get("Currency")) - priceHour;
                         sameUser.replace("Currency", dif + "");
                     }
                 }
