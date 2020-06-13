@@ -46,4 +46,24 @@ public class DriverProfileController implements Initializable {
             e.printStackTrace();
         }
     }
-}
+
+    @FXML
+    public void handleFinesButton() {
+        Main main = new Main();
+        try {
+            main.changeMainStage("/fxml/viewFines.fxml", "Parking Application - Fines");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void handleWalletButton(){
+        Main main = new Main();
+        try {
+            main.changeMainStage("/fxml/viewWallet.fxml", "Parking Application - MyWallet");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        }
+    }
+

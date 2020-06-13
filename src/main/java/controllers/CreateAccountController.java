@@ -97,6 +97,7 @@ public class CreateAccountController {
         newUser.put("RegistrationNumber", regNumber);
         newUser.put("Password", enc.encodeToString(password.getBytes()));
         newUser.put("ConfirmPassword", enc.encodeToString(confPassword.getBytes()));
+        newUser.put("Currency:", "0");
         
             try {
                 FileReader reader = new FileReader("src/main/resources/users.json");
