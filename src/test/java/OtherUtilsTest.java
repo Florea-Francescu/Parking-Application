@@ -9,15 +9,16 @@ public class OtherUtilsTest extends TestCase {
         super(s);
     }
 
-    public void testIsSuspectFalse()
-    {
-        OtherUtils obj = new OtherUtils();
-        Assert.assertEquals(false, obj.isSuspect("abc"));
-    }
     public void testIsSuspectTrue()
     {
         OtherUtils obj = new OtherUtils();
         Assert.assertEquals(true, obj.isSuspect("TM18TSM"));
+    }
+
+    public void testIsSuspectFalse()
+    {
+        OtherUtils obj = new OtherUtils();
+        Assert.assertEquals(false, obj.isSuspect("abc"));
     }
 
     public void testGetUser(){
