@@ -30,7 +30,26 @@ public class DriverWalletController implements Initializable {
     public TextField codeField;
 
     public void initialize(URL location, ResourceBundle resources) {
-        currencyLabel.setText((String) Main.currentUser.get("Currency"));
+        try {
+            FileReader readerUser = new FileReader("src/main/resources/users.json");
+            Object objUser = new JSONParser().parse(readerUser);
+            JSONArray userData = (JSONArray) objUser;
+            readerUser.close();
+            Iterator<JSONObject> it = userData.iterator();
+            while (it.hasNext()) {
+                JSONObject sameUser = it.next();
+
+                if (sameUser.get("Email").equals((String) Main.currentUser.get("Email"))) {
+                    currencyLabel.setText((String) sameUser.get("Currency"));
+                    break;
+                }
+            }
+
+        }catch(IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

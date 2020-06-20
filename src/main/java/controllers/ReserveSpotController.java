@@ -66,6 +66,7 @@ public class ReserveSpotController {
     @FXML
     public void handleReserveButton() {
 
+        init();
         if (parseInt((String) Main.currentUser.get("Currency")) >= priceHour) {
             try {
                 FileReader readerUser = new FileReader("src/main/resources/users.json");
@@ -78,7 +79,7 @@ public class ReserveSpotController {
                     JSONObject sameUser = itReader.next();
                     int dif;
                     if (sameUser.get("Email").equals((String) Main.currentUser.get("Email"))) {
-                        dif = parseInt((String) sameUser.get("Currency")) - priceHour;
+                        dif = parseInt((String) Main.currentUser.get("Currency")) - priceHour;
                         sameUser.replace("Currency", dif + "");
                     }
                 }
@@ -147,6 +148,29 @@ public class ReserveSpotController {
         stage.close();
     }
 
+    private void init()
+    {
+        try {
+            FileReader readerUser = new FileReader("src/main/resources/users.json");
+            Object objUser = new JSONParser().parse(readerUser);
+            JSONArray userData = (JSONArray) objUser;
+            readerUser.close();
+            Iterator<JSONObject> it = userData.iterator();
+            while (it.hasNext()) {
+                JSONObject sameUser = it.next();
+
+                if (sameUser.get("Email").equals((String) Main.currentUser.get("Email"))) {
+                    Main.currentUser = sameUser;
+                    break;
+                }
+            }
+
+        }catch(IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
     private boolean sameRegNumber(JSONObject o1, JSONObject o2){
         return o1.get("RegistrationNumber").equals(o2.get("RegistrationNumber"));
     }
