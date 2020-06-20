@@ -23,7 +23,6 @@ public class CreateAccountControllerTest extends ApplicationTest {
     @Before
     public void Before()
     {
-        System.out.println("Before");
         c1 = new CreateAccountController();
         c1.errorLabel = new Label();
         c1.emailInput = new TextField();
@@ -34,18 +33,11 @@ public class CreateAccountControllerTest extends ApplicationTest {
         c1.confPassInput = new PasswordField();
     }
 
-    @After
-    public void After()
-    {
-        System.out.println("After");
-    }
-
     @Test
     public void testEmail(){
         c1.emailInput.setText("test@gmail.co");
         c1.handleCreateAccountButton();
         assertEquals("Please type a valid email", c1.errorLabel.getText());
-        System.out.println("ok");
     }
 
     @Test
@@ -53,7 +45,6 @@ public class CreateAccountControllerTest extends ApplicationTest {
         c1.emailInput.setText("test@gmail.com");
         c1.handleCreateAccountButton();
         assertEquals("Complete your name", c1.errorLabel.getText());
-        System.out.println("ok");
     }
 
     @Test
@@ -64,7 +55,6 @@ public class CreateAccountControllerTest extends ApplicationTest {
         c1.regNumberInput.setText("t");
         c1.handleCreateAccountButton();
         assertEquals("Please type your password", c1.errorLabel.getText());
-        System.out.println("ok");
     }
 
     @Test
@@ -76,7 +66,6 @@ public class CreateAccountControllerTest extends ApplicationTest {
         c1.confPassInput.setText("oo");
         c1.handleCreateAccountButton();
         assertEquals("Please type car registration number", c1.errorLabel.getText());
-        System.out.println("ok");
     }
 
 }
