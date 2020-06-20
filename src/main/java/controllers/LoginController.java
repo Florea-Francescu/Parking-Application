@@ -34,7 +34,7 @@ public class LoginController {
     @FXML
     public RadioButton managerButton;
 
-    private boolean sameAccount(JSONObject o1, JSONObject o2){
+    public boolean sameAccount(JSONObject o1, JSONObject o2){
         return o1.get("Email").equals(o2.get("Email")) &&
                 o1.get("Password").equals(o2.get("Password"));
     }
