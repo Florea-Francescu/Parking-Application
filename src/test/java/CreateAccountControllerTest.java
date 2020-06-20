@@ -1,13 +1,7 @@
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import main.java.Main;
 import main.java.controllers.CreateAccountController;
-import org.junit.After;
 
 import org.junit.Before;
 import org.junit.Test;
