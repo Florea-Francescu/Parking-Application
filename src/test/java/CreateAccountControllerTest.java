@@ -14,21 +14,11 @@ import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
 import static org.junit.Assert.assertEquals;
-import static org.testfx.api.FxAssert.verifyThat;
-import static org.testfx.util.NodeQueryUtils.hasText;
+
 
 public class CreateAccountControllerTest extends ApplicationTest {
 
     private CreateAccountController c1;
-
-    @Override
-    public void start (Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/createAccount.fxml"));
-        Parent root = (Parent)fxmlLoader.load();
-        stage.setScene(new Scene(root,400,200));
-        stage.show();
-    }
-
 
     @Before
     public void Before()

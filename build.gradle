@@ -4,6 +4,13 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.0.8'
 }
 
+test {
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
+    dependsOn 'cleanTest'
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
@@ -21,6 +28,11 @@ sourceSets {
         }
         resources {
             srcDirs = ['src/main/resources']
+        }
+    }
+    test{
+        java{
+            srcDir 'test'
         }
     }
 }
