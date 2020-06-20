@@ -23,6 +23,11 @@ sourceSets {
             srcDirs = ['src/main/resources']
         }
     }
+    test{
+        java{
+            srcDir 'test'
+        }
+    }
 }
 
 repositories {
@@ -35,7 +40,6 @@ dependencies {
     compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
     compile group: 'org.testfx', name: 'testfx-junit', version: '4.0.15-alpha'
     testImplementation 'junit:junit:4.12'
-
 }
 
 mainClassName = 'main.java.Main'
