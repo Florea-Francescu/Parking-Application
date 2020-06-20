@@ -1,6 +1,11 @@
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import main.java.Main;
 import main.java.controllers.CreateAccountController;
 import org.junit.After;
 
@@ -9,10 +14,22 @@ import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
 import static org.junit.Assert.assertEquals;
+import static org.testfx.api.FxAssert.verifyThat;
+import static org.testfx.util.NodeQueryUtils.hasText;
 
 public class CreateAccountControllerTest extends ApplicationTest {
 
     private CreateAccountController c1;
+
+    @Override
+    public void start (Stage stage) throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/createAccount.fxml"));
+        Parent root = (Parent)fxmlLoader.load();
+        stage.setScene(new Scene(root,400,200));
+        stage.show();
+    }
+
+
     @Before
     public void Before()
     {
