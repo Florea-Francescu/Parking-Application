@@ -18,9 +18,7 @@ public class ManagerProfileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        fstNameLabel.setText((String)Main.currentUser.get("FirstName"));
-        lstNameLabel.setText((String)Main.currentUser.get("LastName"));
-        emailLabel.setText((String)Main.currentUser.get("Email"));
+        initializeLabels();
     }
 
     @FXML
@@ -55,5 +53,11 @@ public class ManagerProfileController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void initializeLabels(){
+        fstNameLabel.setText((String)Main.currentUser.get("FirstName"));
+        lstNameLabel.setText((String)Main.currentUser.get("LastName"));
+        emailLabel.setText((String)Main.currentUser.get("Email"));
     }
 }
